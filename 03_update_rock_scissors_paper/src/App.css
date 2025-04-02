@@ -1,0 +1,53 @@
+.App {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* background-color: rgb(255, 255, 255); */
+    height: 100vh;
+    z-index: -1;
+    position: relative;
+}
+
+.gameContainer {
+    position: absolute;
+    background-color: rgb(255, 240, 240);
+    overflow: hidden;
+    width: 375px;
+    height: 812px;
+
+    border-radius: 30px;
+    box-shadow: 20px 20px 60px rgba(0, 0, 0, 0.2);
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    /* background-image: url("C:\코알누2\03_update_rock_scissors_paper\public\assets\defaultLayout.svg"); */
+    /* overflow: hidden; */
+}
+
+.boxContainer {
+    border: 1px solid black;
+    /* margin: 20px; */
+    width: 90%;
+    height: 280px;
+}
+
+.buttonContainer {
+    border: 1px solid black;
+    /* margin: 10px; */
+
+    display: flex;
+
+    /* width: 100%; */
+    justify-content: center;
+    align-items: center;
+    /* background-color: red; */
+    gap: 40px;
+    button {
+        margin: 18px;
+    }
+}
