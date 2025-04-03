@@ -1,6 +1,6 @@
 import React from "react";
-import GamePage from "./pages/GamePage";
 import "./App.css";
+import GamePage from "./pages/GamePage";
 
 function App() {
     return (

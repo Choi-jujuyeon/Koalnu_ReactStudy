@@ -3,9 +3,7 @@
     justify-content: center;
     align-items: center;
 
-    /* background-color: rgb(255, 255, 255); */
     height: 100vh;
-    z-index: -1;
     position: relative;
 }
 
@@ -25,6 +23,7 @@
     align-items: center;
     justify-content: center;
     gap: 10px;
+    /* cursor: pointer; */
     /* background-image: url("C:\코알누2\03_update_rock_scissors_paper\public\assets\defaultLayout.svg"); */
     /* overflow: hidden; */
 }
@@ -33,21 +32,45 @@
     border: 1px solid black;
     /* margin: 20px; */
     width: 90%;
-    height: 280px;
+    height: 250px;
+
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    /* align-items: center; */
+    /* margin-left: 10px; */
+    border-radius: 30px;
+    overflow: hidden;
+    position: relative;
+    z-index: 9;
+    color: #fff;
+    h2 {
+        margin-left: 20px;
+    }
+    img {
+        position: absolute;
+        z-index: -1;
+        margin: auto;
+
+        /* height: 180px; */
+        height: 100%;
+        width: 100%;
+        /* border-radius: 30px; */
+        /* width: 500px; */
+        /* height: 400px; */
+    }
 }
 
 .buttonContainer {
     border: 1px solid black;
-    /* margin: 10px; */
-
     display: flex;
-
-    /* width: 100%; */
     justify-content: center;
     align-items: center;
-    /* background-color: red; */
     gap: 40px;
+    /* z-index: -1; */
     button {
         margin: 18px;
+        cursor: pointer;
+        z-index: 10;
     }
 }
