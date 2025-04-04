@@ -20,10 +20,30 @@ const choice = {
 
 function GamePage() {
     const [userSelect, setUserSelect] = useState(null);
+    const [computerSelect, setComputerSelect] = useState(null);
 
     const play = (userChoice) => {
         setUserSelect(choice[userChoice]);
-        console.log(userSelect);
+        //console.log(userSelect);
+
+        let computerChoice = randomChoice();
+        setComputerSelect(computerChoice);
+    };
+
+    //랜덤으로 값을 주자
+    const randomChoice = () => {
+        let randomItem = Math.random(); //0~1 사이의 숫자를 랜덤으로 보여준다
+        //console.log("randomVal: ", randomItem);
+
+        let itemArray = Object.keys(choice); // ['rock', 'scissors', 'paper'] ← choice의 키만 뽑아서 배열로 만듦
+        // console.log(itemArray);
+
+        let resultRandomVal = Math.floor(randomItem * itemArray.length);
+        //console.log(resultRandomVal);
+
+        let final = itemArray[resultRandomVal];
+        //console.log("final: ", final);
+        return choice[final];
     };
 
     return (
@@ -31,7 +51,7 @@ function GamePage() {
             <h1>Rock Scissors Paper!</h1>
             <ButtonContainer>상태바 들어 갈예정</ButtonContainer>
 
-            <GameBox title="Computer" item={userSelect} />
+            <GameBox title="Computer" item={computerSelect} />
             <h3>VS</h3>
             <GameBox title="You" item={userSelect} />
 
