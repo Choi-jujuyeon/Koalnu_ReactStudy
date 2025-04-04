@@ -1,11 +1,18 @@
 import React from "react";
 import styled from "styled-components";
-function WeatherBox() {
+function WeatherBox({ weather }) {
+    console.log("weather", weather);
+
     return (
         <WeatherBoxContainer>
-            <div>서울</div>
-            <div>30도</div>
-            <div>화씨</div>
+            {/* <div>{weather && weather.name}</div> */}
+            <div>{weather?.name}</div>
+
+            <div>
+                {weather?.main.temp}℃/
+                {Math.round((weather?.main.temp * 9) / 5 + 32)}℉
+            </div>
+            <div>{weather?.weather[0].description}</div>
         </WeatherBoxContainer>
     );
 }

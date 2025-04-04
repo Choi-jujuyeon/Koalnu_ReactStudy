@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import WeatherBox from "../components/WeatherBox";
 import WeatherButton from "../components/WeatherButton";
@@ -12,6 +12,7 @@ import WeatherButton from "../components/WeatherButton";
 5. 데이터를 들고오는 동안 로딩 스피너가 돈다.
 */
 function WeatherPage() {
+    const [weather, setWeather] = useState(null);
     const getCurrentLocation = () => {
         // console.log("바로 호출이 된다!");
         //현재 위치를 보여줘야 한다.
@@ -28,7 +29,9 @@ function WeatherPage() {
         let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`;
         let response = await fetch(url); //비동기적으로 처리=>async함수로 동작!
         let data = await response.json();
-        console.log("data", data);
+        // console.log("data", data);
+
+        setWeather(data);
     };
 
     useEffect(() => {
@@ -36,7 +39,7 @@ function WeatherPage() {
     }, []);
     return (
         <WeatherPageContainer>
-            <WeatherBox />
+            <WeatherBox weather={weather} />
             <WeatherButton />
         </WeatherPageContainer>
     );
