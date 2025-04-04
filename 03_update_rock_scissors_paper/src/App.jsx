@@ -1,13 +1,22 @@
 import React from "react";
-import "./App.css";
+import styled from "styled-components";
 import GamePage from "./pages/GamePage";
 
 function App() {
     return (
-        <div className="App">
+        <AppContainer>
             <GamePage />
-        </div>
+        </AppContainer>
     );
 }
 
 export default App;
+const AppContainer = styled.div`
+    /* background-color: aliceblue; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 100vh;
+    position: relative;
+`;
