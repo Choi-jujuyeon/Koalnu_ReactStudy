@@ -1,4 +1,7 @@
 import { useEffect } from "react";
+import styled from "styled-components";
+import WeatherBox from "../components/WeatherBox";
+import WeatherButton from "../components/WeatherButton";
 /*
 1. 앱 실행하자마자 현재 위치 기반의 날씨가 나온다.
     : 날씨 정보에는 도시, 섭씨, 화씨, 날씨 상태 정보가 있다.
@@ -31,7 +34,24 @@ function WeatherPage() {
     useEffect(() => {
         getCurrentLocation();
     }, []);
-    return <div>WeatherPage</div>;
+    return (
+        <WeatherPageContainer>
+            <WeatherBox />
+            <WeatherButton />
+        </WeatherPageContainer>
+    );
 }
 
 export default WeatherPage;
+
+const WeatherPageContainer = styled.div`
+    background: url("https://i.pinimg.com/474x/1e/fc/09/1efc099514a41cc4029f37fe42d867a5.jpg");
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+`;
