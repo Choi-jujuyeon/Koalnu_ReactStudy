@@ -1,38 +1,40 @@
 import React from "react";
 import styled from "styled-components";
 
-function GameBox({ title, image }) {
+function GameBox({ title, item }) {
     return (
         <BoxContainer>
             <Title>{title}</Title>
-            <Image src={image} alt="게임 이미지" />
+            <ImageBox>
+                {/* 이미지를 선택하기 전 오류 방지지 */}
+                <img src={item && item.imgUrl} alt="" />
+            </ImageBox>
         </BoxContainer>
     );
 }
 
 export default GameBox;
 
+// Styled Components
 const BoxContainer = styled.div`
-    border: 1px solid black;
-    width: 90%;
-    height: 250px;
     display: flex;
     flex-direction: column;
-    border-radius: 30px;
-    overflow: hidden;
-    position: relative;
-    z-index: 9;
-    color: #fff;
 `;
 
 const Title = styled.h2`
-    margin-left: 20px;
+    color: black;
+    margin-bottom: 10px;
+    margin-top: 0px;
 `;
 
-const Image = styled.img`
-    position: absolute;
-    z-index: -1;
-    margin: auto;
-    height: 100%;
-    width: 100%;
+const ImageBox = styled.div`
+    border: 1px solid black;
+    border-radius: 30px;
+    width: 300px;
+    height: 200px;
+    background-color: #ffebeb;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
 `;
