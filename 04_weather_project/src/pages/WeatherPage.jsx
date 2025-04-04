@@ -16,7 +16,16 @@ function WeatherPage() {
             let lat = position.coords.latitude;
             let lon = position.coords.longitude;
             // console.log("lat", lat, "long", lon);
+            getWeatherByCurrentLocation(lat, lon);
         });
+    };
+    const getWeatherByCurrentLocation = async (lat, lon) => {
+        const API_KEY = "57eb4fd31ae9cfe1da06fea68062638a"; // 공백 없이!
+
+        let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`;
+        let response = await fetch(url); //비동기적으로 처리=>async함수로 동작!
+        let data = await response.json();
+        console.log("data", data);
     };
 
     useEffect(() => {
