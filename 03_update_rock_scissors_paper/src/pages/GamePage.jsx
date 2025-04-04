@@ -21,6 +21,7 @@ const choice = {
 function GamePage() {
     const [userSelect, setUserSelect] = useState(null);
     const [computerSelect, setComputerSelect] = useState(null);
+    const [result, setResult] = useState(""); //승패를 보여주는 state
 
     const play = (userChoice) => {
         setUserSelect(choice[userChoice]);
@@ -28,6 +29,19 @@ function GamePage() {
 
         let computerChoice = randomChoice();
         setComputerSelect(computerChoice);
+
+        setResult(judgement(choice[userChoice], computerChoice));
+    };
+    const judgement = (user, com) => {
+        // console.log("user: ", user, "com: ", com);
+        if (user.name === com.name) {
+            return "tie";
+        } else if (user.name === "Rock")
+            return com.name === "Scissors" ? "win" : "lose";
+        else if (user.name === "Scissors")
+            return com.name === "Paper" ? "win" : "lose";
+        else if (user.name === "Paper")
+            return com.name === "Rock" ? "win" : "lose";
     };
 
     //랜덤으로 값을 주자
@@ -51,9 +65,9 @@ function GamePage() {
             <h1>Rock Scissors Paper!</h1>
             <ButtonContainer>상태바 들어 갈예정</ButtonContainer>
 
-            <GameBox title="Computer" item={computerSelect} />
+            <GameBox title="Computer" item={computerSelect} result={result} />
             <h3>VS</h3>
-            <GameBox title="You" item={userSelect} />
+            <GameBox title="You" item={userSelect} result={result} />
 
             <ButtonContainer>
                 <button onClick={() => play("scissors")}>가위1</button>
