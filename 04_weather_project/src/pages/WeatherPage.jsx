@@ -13,6 +13,8 @@ import WeatherButton from "../components/WeatherButton";
 */
 function WeatherPage() {
     const [weather, setWeather] = useState(null);
+    const cities=['paris','new york','tokyo','seoul']
+
     const getCurrentLocation = () => {
         // console.log("바로 호출이 된다!");
         //현재 위치를 보여줘야 한다.
@@ -40,7 +42,7 @@ function WeatherPage() {
     return (
         <WeatherPageContainer>
             <WeatherBox weather={weather} />
-            <WeatherButton />
+            <WeatherButton cities={cities}/>
         </WeatherPageContainer>
     );
 }
