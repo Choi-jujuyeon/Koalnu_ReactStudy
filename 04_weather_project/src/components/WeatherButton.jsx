@@ -9,11 +9,10 @@ const WeatherButton = ({cities,setCity}) => {
     // const 
     return (
         <WeatherButtonContainer>
-            {/* 리액트 전용 부트스트랩 */}
-            
-            {cities.map((item)=>(
-                <Button variant="warning" onClick={()=>{setCity(item)}}>{item}</Button>
-            ))}
+            {cities.map((item) =>item === "Current location" ?
+            (<Button key={item} variant="warning" onClick={() => setCity("")}>{item}</Button>) : 
+            (<Button key={item} variant="warning" onClick={() => setCity(item)}>{item}</Button>)
+            )}
         </WeatherButtonContainer>
     );
 }

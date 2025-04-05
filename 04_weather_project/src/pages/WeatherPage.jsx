@@ -16,7 +16,7 @@ function WeatherPage() {
     const [weather, setWeather] = useState(null);
     const [city,setCity] = useState('')
     const [loading,setLoading] = useState(false)
-    const cities=['paris','new york','tokyo','seoul']
+    const cities=['Current location','paris','new york','tokyo','seoul']
 
     const getCurrentLocation = () => {
         // console.log("바로 호출이 된다!");
@@ -35,7 +35,7 @@ function WeatherPage() {
         setLoading(true)
         let response = await fetch(url); //비동기적으로 처리=>async함수로 동작!
         let data = await response.json();
-        // console.log("data", data);
+        console.log("data", data);
         
         setWeather(data);
         setLoading(false)
@@ -43,6 +43,7 @@ function WeatherPage() {
 
     const getWeatherByCity = async() =>{
         const API_KEY = "57eb4fd31ae9cfe1da06fea68062638a"; // 공백 없이!
+        
         let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`;//state->city값 넣어주기
         setLoading(true)
         let response = await fetch(url);
@@ -70,7 +71,7 @@ function WeatherPage() {
             {loading?(<LoadingSpinner loading={loading}/>):(   
                 <>
             <WeatherBox weather={weather} />
-            <WeatherButton cities={cities} setCity={setCity}/></>
+            <WeatherButton weather={weather} cities={cities} setCity={setCity}/></>
             ) }
           
          
