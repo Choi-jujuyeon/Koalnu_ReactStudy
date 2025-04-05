@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
+import LoadingSpinner from "../components/LoadingSpinner";
 import WeatherBox from "../components/WeatherBox";
 import WeatherButton from "../components/WeatherButton";
 /*
@@ -14,6 +15,7 @@ import WeatherButton from "../components/WeatherButton";
 function WeatherPage() {
     const [weather, setWeather] = useState(null);
     const [city,setCity] = useState('')
+    const [loading,setLoading] = useState(false)
     const cities=['paris','new york','tokyo','seoul']
 
     const getCurrentLocation = () => {
@@ -30,20 +32,24 @@ function WeatherPage() {
         const API_KEY = "57eb4fd31ae9cfe1da06fea68062638a"; // 공백 없이!
 
         let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`;
+        setLoading(true)
         let response = await fetch(url); //비동기적으로 처리=>async함수로 동작!
         let data = await response.json();
         // console.log("data", data);
-
+        
         setWeather(data);
+        setLoading(false)
     };
 
     const getWeatherByCity = async() =>{
         const API_KEY = "57eb4fd31ae9cfe1da06fea68062638a"; // 공백 없이!
         let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`;//state->city값 넣어주기
+        setLoading(true)
         let response = await fetch(url);
         let data = await response.json();
         // console.log("data",data)
         setWeather(data)
+        setLoading(false)
         
     }
     useEffect(() => {
@@ -61,8 +67,13 @@ function WeatherPage() {
     // },[city])
     return (
         <WeatherPageContainer>
+            {loading?(<LoadingSpinner loading={loading}/>):(   
+                <>
             <WeatherBox weather={weather} />
-            <WeatherButton cities={cities} setCity={setCity}/>
+            <WeatherButton cities={cities} setCity={setCity}/></>
+            ) }
+          
+         
         </WeatherPageContainer>
     );
 }
