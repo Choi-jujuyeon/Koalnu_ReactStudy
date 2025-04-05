@@ -13,6 +13,7 @@ import WeatherButton from "../components/WeatherButton";
 */
 function WeatherPage() {
     const [weather, setWeather] = useState(null);
+    const [city,setCity] = useState('')
     const cities=['paris','new york','tokyo','seoul']
 
     const getCurrentLocation = () => {
@@ -36,13 +37,32 @@ function WeatherPage() {
         setWeather(data);
     };
 
+    const getWeatherByCity = async() =>{
+        const API_KEY = "57eb4fd31ae9cfe1da06fea68062638a"; // 공백 없이!
+        let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`;//state->city값 넣어주기
+        let response = await fetch(url);
+        let data = await response.json();
+        // console.log("data",data)
+        setWeather(data)
+        
+    }
     useEffect(() => {
-        getCurrentLocation();
-    }, []);
+        if(city==""){
+            getCurrentLocation()
+        }else{
+            getWeatherByCity();
+        }
+    }, [city]);
+    // city 버튼 클릭할때마다 도시별 날씨가 나오게 설정
+    // useEffect(()=>{
+    //     // console.log("city?",city)
+    //     getWeatherByCity()
+
+    // },[city])
     return (
         <WeatherPageContainer>
             <WeatherBox weather={weather} />
-            <WeatherButton cities={cities}/>
+            <WeatherButton cities={cities} setCity={setCity}/>
         </WeatherPageContainer>
     );
 }

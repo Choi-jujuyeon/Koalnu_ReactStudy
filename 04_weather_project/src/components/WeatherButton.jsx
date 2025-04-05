@@ -3,14 +3,16 @@ import { Button, FigureCaption } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import styled from "styled-components";
 
-const WeatherButton = ({cities}) => {
-    console.log("citi: ",cities)
+const WeatherButton = ({cities,setCity}) => {
+    // console.log("citi: ",cities)
+
+    // const 
     return (
         <WeatherButtonContainer>
             {/* 리액트 전용 부트스트랩 */}
             
             {cities.map((item)=>(
-                <Button variant="warning" >{item}</Button>
+                <Button variant="warning" onClick={()=>{setCity(item)}}>{item}</Button>
             ))}
         </WeatherButtonContainer>
     );
