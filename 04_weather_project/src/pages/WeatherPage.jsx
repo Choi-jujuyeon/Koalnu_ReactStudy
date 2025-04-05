@@ -71,7 +71,7 @@ function WeatherPage() {
             {loading?(<LoadingSpinner loading={loading}/>):(   
                 <>
             <WeatherBox weather={weather} />
-            <WeatherButton weather={weather} cities={cities} setCity={setCity}/></>
+            <WeatherButton selectedCity={city} cities={cities} setCity={setCity}/></>
             ) }
           
          
