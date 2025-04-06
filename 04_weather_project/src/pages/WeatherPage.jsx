@@ -91,4 +91,10 @@ const WeatherPageContainer = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    @media (max-width: 600px) {
+        & > div:first-child {
+            width: 250px; // WeatherBox 스타일
+        }
+    }
 `;

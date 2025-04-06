@@ -28,4 +28,10 @@ const WeatherButtonContainer = styled.div`
   justify-content: center;
   align-items: center;
   gap: 18px;
+  flex-wrap: wrap; // 버튼 줄바꿈
+
+  @media (max-width: 600px) {
+    flex-direction: column; // 세로로 정렬
+    gap: 10px;
+  }
 `;
