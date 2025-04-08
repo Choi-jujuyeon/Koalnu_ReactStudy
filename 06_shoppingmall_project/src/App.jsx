@@ -7,6 +7,7 @@ import ProductDetailPage from "./pages/ProductDetailPage";
 
 /*
 00. 전체 상품페이지, 로그인, 상품상세 페이지
+00-1. navigation 바 생성하기
 01. 전체 상품페이지: 전체 상품 볼 수 있음
 02. 로그인 버튼을 누르면 로그인 페이지가 나온다.
 03. 상품디테일 페이지를 눌렀으나, 로그인이 안되어 있을 경우 로그인 페이지 먼저!
