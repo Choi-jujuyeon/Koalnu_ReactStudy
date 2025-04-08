@@ -21,11 +21,34 @@ const ProductAllPage = () => {
     return (
         <Container>
             <h1>전체 상품 페이지</h1>
-            <ProductCard />
+            <Row>
+                {productList.map((menu) => (
+                    <ProductCard />
+                ))}
+                {/* <ProductCard />
+                <ProductCard />
+                <ProductCard />
+                <ProductCard /> */}
+            </Row>
         </Container>
     );
 };
 
 export default ProductAllPage;
 
-const Container = styled.div``;
+const Container = styled.div`
+    background-color: #6fd1ff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 100px;
+    margin-right: 100px;
+    width: 100%;
+`;
+const Row = styled.div`
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4열로 고정 */
+    gap: 18px;
+    /* width: 100%; */
+`;
