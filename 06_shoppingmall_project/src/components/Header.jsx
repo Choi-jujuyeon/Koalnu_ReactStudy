@@ -127,7 +127,11 @@ const MenuBar = styled.div`
     align-items: center;
     width: 100%;
     height: 60px;
-    /* background-color: royalblue; */
+
+    @media (max-width: 1350px) {
+        flex-direction: column;
+        align-items: flex-start;
+    }
 `;
 
 const Menu = styled.div`
@@ -139,11 +143,19 @@ const Menu = styled.div`
 
     ul {
         display: flex;
+        flex-wrap: nowrap; // 줄바꿈 방지
         list-style-type: none;
         gap: 24px;
         margin: 0;
         padding: 0;
-        /* color: white; */
+        white-space: nowrap; // 텍스트 줄바꿈 방지
+    }
+
+    @media (max-width: 1350px) {
+        ul {
+            overflow-x: auto;
+            gap: 16px;
+        }
     }
 `;
 
@@ -158,6 +170,10 @@ const Search = styled.div`
     font-size: 18px;
     font-weight: 500;
     color: #0d99ff;
+
+    @media (max-width: 1350px) {
+        display: none;
+    }
 `;
 const InputWrapper = styled.div`
     position: relative;
