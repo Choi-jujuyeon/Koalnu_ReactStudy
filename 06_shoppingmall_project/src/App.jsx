@@ -20,6 +20,8 @@ import { useState, useEffect } from "react";
 */
 const App = () => {
     const [isLogin, setIsLogin] = useState(false);
+    const [isEmail, setIsEmail] = useState("");
+
     const navigate = useNavigate();
     useEffect(() => {
         console.log("setIsLogin_TEST", isLogin);
@@ -29,11 +31,26 @@ const App = () => {
     }, [isLogin]);
     return (
         <Routes>
-            <Route path="/" element={<Header isLogin={isLogin} />}>
+            <Route
+                path="/"
+                element={
+                    <Header
+                        isLogin={isLogin}
+                        setIsLogin={setIsLogin}
+                        isEmail={isEmail}
+                    />
+                }
+            >
                 <Route index element={<ProductAllPage />} />
                 <Route
                     path="login"
-                    element={<LoginPage setIsLogin={setIsLogin} />}
+                    element={
+                        <LoginPage
+                            setIsLogin={setIsLogin}
+                            setIsEmail={setIsEmail}
+                            isEmail={isEmail}
+                        />
+                    }
                 />
                 <Route path="product/:id" element={<ProductDetailPage />} />
             </Route>

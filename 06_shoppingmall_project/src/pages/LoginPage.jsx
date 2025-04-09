@@ -1,18 +1,25 @@
 import React from "react";
 import styled from "styled-components";
+import { useState } from "react";
 
-const LoginPage = ({ setIsLogin }) => {
+const LoginPage = ({ setIsLogin, setIsEmail, isEmail }) => {
     const loginUser = (event) => {
         //onSubmit의 새로고침(렌더)를 막아줘야 한다
         event.preventDefault();
-        console.log("login user function issu");
+        //console.log("login user function issu");
         setIsLogin(true);
     };
+
     return (
         <Form action="" onSubmit={(event) => loginUser(event)}>
             <Title>Login</Title>
             <InputField>
-                <Input type="text" required />
+                <Input
+                    type="text"
+                    value={isEmail}
+                    onChange={(e) => setIsEmail(e.target.value)}
+                    required
+                />
                 <Label>Enter Email</Label>
             </InputField>
             <InputField>

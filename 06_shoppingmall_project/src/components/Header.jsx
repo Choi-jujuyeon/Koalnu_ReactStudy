@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import { Outlet, useNavigate } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import { useState } from "react";
-const Header = ({ isLogin }) => {
+const Header = ({ isLogin, isEmail, setIsLogin }) => {
     const navigate = useNavigate();
     const menuList = [
         "여성",
@@ -15,9 +15,12 @@ const Header = ({ isLogin }) => {
         "지속가능성",
     ];
     const handleLogin = () => {
-        // if (isLogin === false) {
-        navigate("/login");
-        // }
+        if (isLogin === true) {
+            setIsLogin(false);
+            alert("로그아웃 되었습니다.");
+        } else {
+            navigate("/login");
+        }
     };
 
     return (
@@ -28,15 +31,16 @@ const Header = ({ isLogin }) => {
                         src={`${process.env.PUBLIC_URL}/assets/icons/user.svg`}
                         alt="login"
                     />
-                    <div> Login</div>
+                    <div>{isLogin ? `${isEmail} 님 환영합니다!` : "Login"}</div>
                 </BButton>
             </ButtonContainer>
-
-            <img
-                src={`${process.env.PUBLIC_URL}/assets/images/logo.svg`}
-                alt="logo"
-                width="180px"
-            />
+            <Link to="/">
+                <img
+                    src={`${process.env.PUBLIC_URL}/assets/images/logo.svg`}
+                    alt="logo"
+                    width="180px"
+                />
+            </Link>
 
             <MenuBar>
                 <Menu>
