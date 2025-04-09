@@ -1,10 +1,10 @@
 import React from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import Header from "./components/Header";
 import ProductAllPage from "./pages/ProductAllPage";
 import LoginPage from "./pages/LoginPage";
 import ProductDetailPage from "./pages/ProductDetailPage";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 /*
 00. 전체 상품페이지, 로그인, 상품상세 페이지
 00-1. navigation 바 생성하기
@@ -20,12 +20,21 @@ import { useState } from "react";
 */
 const App = () => {
     const [isLogin, setIsLogin] = useState(false);
-
+    const navigate = useNavigate();
+    useEffect(() => {
+        console.log("setIsLogin_TEST", isLogin);
+        if (isLogin == true) {
+            navigate("/");
+        }
+    }, [isLogin]);
     return (
         <Routes>
             <Route path="/" element={<Header isLogin={isLogin} />}>
                 <Route index element={<ProductAllPage />} />
-                <Route path="login" element={<LoginPage />} />
+                <Route
+                    path="login"
+                    element={<LoginPage setIsLogin={setIsLogin} />}
+                />
                 <Route path="product/:id" element={<ProductDetailPage />} />
             </Route>
         </Routes>

@@ -1,11 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 
-const LoginPage = () => {
+const LoginPage = ({ setIsLogin }) => {
     const loginUser = (event) => {
         //onSubmit의 새로고침(렌더)를 막아줘야 한다
         event.preventDefault();
         console.log("login user function issu");
+        setIsLogin(true);
     };
     return (
         <Form action="" onSubmit={(event) => loginUser(event)}>
