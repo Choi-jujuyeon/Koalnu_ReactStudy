@@ -1,9 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-import { Link, Outlet, useNavigate } from "react-router-dom";
+import { Link, Outlet, useNavigate, useLocation } from "react-router-dom";
 import { useState } from "react";
 const Header = ({ isLogin, isEmail, setIsLogin }) => {
     const navigate = useNavigate();
+    const location = useLocation();
     const menuList = [
         "여성",
         "Divided",
@@ -25,15 +26,19 @@ const Header = ({ isLogin, isEmail, setIsLogin }) => {
 
     return (
         <Container>
-            <ButtonContainer onClick={handleLogin}>
-                <BButton>
-                    <img
-                        src={`${process.env.PUBLIC_URL}/assets/icons/user.svg`}
-                        alt="login"
-                    />
-                    <div>{isLogin ? `${isEmail} 님 환영합니다!` : "Login"}</div>
-                </BButton>
-            </ButtonContainer>
+            {location.pathname != "/login" && (
+                <ButtonContainer onClick={handleLogin}>
+                    <BButton>
+                        <img
+                            src={`${process.env.PUBLIC_URL}/assets/icons/user.svg`}
+                            alt="login"
+                        />
+                        <div>
+                            {isLogin ? `${isEmail} 님 환영합니다!` : "Login"}
+                        </div>
+                    </BButton>
+                </ButtonContainer>
+            )}
             <Link to="/">
                 <img
                     src={`${process.env.PUBLIC_URL}/assets/images/logo.svg`}
@@ -81,6 +86,9 @@ const Container = styled.div`
     margin-left: 100px;
     margin-right: 100px;
     gap: 18px;
+    img {
+        padding: 20px;
+    }
 `;
 const BButton = styled.div`
     display: flex;
