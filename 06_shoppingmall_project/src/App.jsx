@@ -5,6 +5,7 @@ import ProductAllPage from "./pages/ProductAllPage";
 import LoginPage from "./pages/LoginPage";
 import ProductDetailPage from "./pages/ProductDetailPage";
 import { useState, useEffect } from "react";
+import PrivateRoute from "./route/PrivateRoute";
 /*
 00. 전체 상품페이지, 로그인, 상품상세 페이지
 00-1. navigation 바 생성하기
@@ -52,7 +53,10 @@ const App = () => {
                         />
                     }
                 />
-                <Route path="product/:id" element={<ProductDetailPage />} />
+                <Route
+                    path="product/:id"
+                    element={<PrivateRoute isLogin={isLogin} />}
+                />
             </Route>
         </Routes>
     );
