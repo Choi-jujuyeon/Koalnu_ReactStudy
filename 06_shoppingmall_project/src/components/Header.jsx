@@ -1,8 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-import { Outlet } from "react-router-dom";
-
+import { Outlet, useNavigate } from "react-router-dom";
+import { useState } from "react";
 const Header = () => {
+    const [isLogin, setIsLogin] = useState("false");
+    const navigate = useNavigate();
     const menuList = [
         "여성",
         "Divided",
@@ -13,10 +15,15 @@ const Header = () => {
         "Sale",
         "지속가능성",
     ];
+    const handleLogin = () => {
+        if (isLogin === "false") {
+            navigate("/login");
+        }
+    };
 
     return (
         <Container>
-            <ButtonContainer>
+            <ButtonContainer onClick={handleLogin}>
                 <BButton>
                     <img
                         src={`${process.env.PUBLIC_URL}/assets/icons/user.svg`}
@@ -209,10 +216,4 @@ const Underline = styled.span`
     background-color: #08aeea;
     transform: scaleX(0);
     transition: transform 0.3s ease-in-out;
-`;
-
-const SearchText = styled.div`
-    font-size: 14px;
-    color: #08aeea;
-    font-weight: 500;
 `;

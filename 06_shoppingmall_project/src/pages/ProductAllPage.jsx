@@ -6,10 +6,10 @@ const ProductAllPage = () => {
     const [productList, setProductList] = useState([]);
 
     const getProducts = async () => {
-        // let url = "http://localhost:5000/products/";
+        let url = "http://localhost:5000/products/";
 
-        let url =
-            "https://my-json-server.typicode.com/Choi-jujuyeon/TESTDATA/products";
+        // let url =
+        //     "https://my-json-server.typicode.com/Choi-jujuyeon/TESTDATA/products";
         let response = await fetch(url);
         let data = await response.json();
         setProductList(data);
@@ -52,6 +52,6 @@ const Container = styled.div`
 const Row = styled.div`
     display: grid;
     grid-template-columns: repeat(4, 1fr); /* 4열로 고정 */
-    gap: 8px;
+    gap: 13px;
     /* width: 100%; */
 `;
