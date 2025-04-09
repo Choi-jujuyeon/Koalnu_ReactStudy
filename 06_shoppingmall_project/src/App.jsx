@@ -4,7 +4,7 @@ import Header from "./components/Header";
 import ProductAllPage from "./pages/ProductAllPage";
 import LoginPage from "./pages/LoginPage";
 import ProductDetailPage from "./pages/ProductDetailPage";
-
+import { useState } from "react";
 /*
 00. 전체 상품페이지, 로그인, 상품상세 페이지
 00-1. navigation 바 생성하기
@@ -19,9 +19,11 @@ import ProductDetailPage from "./pages/ProductDetailPage";
 
 */
 const App = () => {
+    const [isLogin, setIsLogin] = useState(false);
+
     return (
         <Routes>
-            <Route path="/" element={<Header />}>
+            <Route path="/" element={<Header isLogin={isLogin} />}>
                 <Route index element={<ProductAllPage />} />
                 <Route path="login" element={<LoginPage />} />
                 <Route path="product/:id" element={<ProductDetailPage />} />

@@ -2,8 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Outlet, useNavigate } from "react-router-dom";
 import { useState } from "react";
-const Header = () => {
-    const [isLogin, setIsLogin] = useState("false");
+const Header = ({ isLogin }) => {
     const navigate = useNavigate();
     const menuList = [
         "여성",
@@ -16,9 +15,9 @@ const Header = () => {
         "지속가능성",
     ];
     const handleLogin = () => {
-        if (isLogin === "false") {
-            navigate("/login");
-        }
+        // if (isLogin === false) {
+        navigate("/login");
+        // }
     };
 
     return (
