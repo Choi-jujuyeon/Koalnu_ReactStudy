@@ -6,10 +6,10 @@ const ProductAllPage = () => {
     const [productList, setProductList] = useState([]);
 
     const getProducts = async () => {
-        let url = "http://localhost:5000/products/";
+        // let url = "http://localhost:5000/products/";
 
-        // let url =
-        //     "https://my-json-server.typicode.com/Choi-jujuyeon/TESTDATA/products";
+        let url =
+            "https://my-json-server.typicode.com/Choi-jujuyeon/TESTDATA/products";
         let response = await fetch(url);
         let data = await response.json();
         setProductList(data);
@@ -22,7 +22,7 @@ const ProductAllPage = () => {
     }, []);
     return (
         <Container>
-            <h1>전체 상품 페이지</h1>
+            {/* <h1>전체 상품 페이지</h1> */}
             <Row>
                 {productList.map((menu) => (
                     <ProductCard item={menu} />

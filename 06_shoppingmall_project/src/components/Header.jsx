@@ -87,7 +87,7 @@ const Container = styled.div`
     margin-right: 100px;
     gap: 18px;
     img {
-        padding: 20px;
+        padding: 10px;
     }
 `;
 const BButton = styled.div`

@@ -9,11 +9,12 @@ const ProductCard = ({ item }) => {
     return (
         <Container onClick={showDetail}>
             <img src={item?.img} alt="" />
-
-            <Choice>{item?.new === true ? "concious choice" : ""}</Choice>
-            <div>{item?.title}</div>
-            <div>{item?.price}</div>
-            <Sin>{item?.new === true ? "신상품" : ""}</Sin>
+            <Text>
+                <Choice>{item?.new === true ? "concious choice" : ""}</Choice>
+                <div>{item?.title}</div>
+                <div>{item?.price}</div>
+                <Sin>{item?.new === true ? "신상품" : ""}</Sin>
+            </Text>
         </Container>
     );
 };
@@ -21,24 +22,28 @@ const ProductCard = ({ item }) => {
 export default ProductCard;
 
 const Container = styled.div`
+    /* background-color: #048aff; */
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+
     img {
         width: 100%;
-        height: auto;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        display: block;
-        border-radius: 12px;
-
-        &:hover {
-            transform: scale(1.05);
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
-        }
+        transition: transform 0.3s ease;
+    }
+    img:hover {
+        transform: scale(1.05);
     }
     cursor: pointer;
 `;
 
 const Choice = styled.div`
-    margin-top: 13px;
+    margin-top: 3px;
 `;
 const Sin = styled.div`
     margin-bottom: 13px;
+`;
+const Text = styled.div`
+    width: 100%;
 `;
