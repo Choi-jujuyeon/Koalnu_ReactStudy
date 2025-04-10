@@ -5,6 +5,7 @@ import { useState } from "react";
 const Header = ({ isLogin, isEmail, setIsLogin }) => {
     const navigate = useNavigate();
     const location = useLocation();
+
     const menuList = [
         "여성",
         "Divided",
@@ -23,7 +24,17 @@ const Header = ({ isLogin, isEmail, setIsLogin }) => {
             navigate("/login");
         }
     };
-
+    const search = (e) => {
+        // console.log("keyPress");
+        if (e.key === "Enter") {
+            // console.log("we click this key", e.key);
+            //입력한 검색어를 읽어와***
+            let keyword = e.target.value;
+            console.log("keyword: ", keyword);
+            //url을 바꿔준다.(쿼리)***
+            navigate(`/?q=${keyword}`);
+        }
+    };
     return (
         <Container>
             {location.pathname != "/login" && (
@@ -60,12 +71,14 @@ const Header = ({ isLogin, isEmail, setIsLogin }) => {
                         <InputBox
                             type="text"
                             placeholder="Search for a product"
+                            onKeyPress={(e) => search(e)}
                         />
                         <Underline />
                     </InputWrapper>
                     <img
                         src={`${process.env.PUBLIC_URL}/assets/icons/search.svg`}
                         alt="search"
+                        onClick={search}
                     />
                 </Search>
             </MenuBar>
@@ -191,6 +204,9 @@ const Search = styled.div`
 
     @media (max-width: 1350px) {
         display: none;
+    }
+    img {
+        cursor: pointer;
     }
 `;
 const InputWrapper = styled.div`

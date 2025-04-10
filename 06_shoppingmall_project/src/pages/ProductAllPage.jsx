@@ -2,16 +2,20 @@ import React, { useEffect, useState } from "react";
 import ProductCard from "../components/ProductCard";
 import styled from "styled-components";
 import LoadingSpinner from "../components/LoadingSpinner";
+import { useSearchParams } from "react-router-dom";
 const ProductAllPage = () => {
     //UI에 보여주기 위해서는 -> useState 시용*
     const [productList, setProductList] = useState([]);
     const [loading, setLoading] = useState(false);
 
+    // 쿼리의 있는 글자를 읽어와야 할 때 -> useSearchParams() 사용*
+    const [query, setQuery] = useSearchParams();
+
     const getProducts = async () => {
         // let url = "http://localhost:5000/products/";
-
-        let url =
-            "https://my-json-server.typicode.com/Choi-jujuyeon/TESTDATA/products";
+        let searchQuery = query.get("q") || "";
+        console.log("searchQuery: ", searchQuery);
+        let url = `https://my-json-server.typicode.com/Choi-jujuyeon/TESTDATA/products?q=${searchQuery}`;
         setLoading(true);
         let response = await fetch(url);
         let data = await response.json();
@@ -23,7 +27,7 @@ const ProductAllPage = () => {
     useEffect(() => {
         //함수 호출
         getProducts();
-    }, []);
+    }, [query]);
     return (
         <>
             {loading ? (
