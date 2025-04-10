@@ -41,12 +41,20 @@ const Form = styled.form`
     /* box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2); */
     width: 400px;
     display: flex;
-    justify-content: center;
     flex-direction: column;
+    justify-content: center;
+    /* align-items:start; */
+    margin: auto;
     gap: 10px;
     padding: 25px;
     border-radius: 30px;
     z-index: 99;
+    @media (max-width: 600px) {
+        width: 90%;
+        margin: auto;
+        padding: 0px;
+        /* background-color: red; */
+    }
 `;
 
 const Title = styled.p`
@@ -57,7 +65,13 @@ const Title = styled.p`
 
 const InputField = styled.div`
     position: relative;
-    width: 100%;
+    width: 95%;
+    @media (max-width: 600px) {
+        width: 95%;
+        /* margin: auto; */
+        padding: 0px;
+        /* background-color: red; */
+    }
 `;
 
 const Input = styled.input`

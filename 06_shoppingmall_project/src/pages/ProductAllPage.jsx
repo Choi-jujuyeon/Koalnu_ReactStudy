@@ -55,9 +55,17 @@ const Container = styled.div`
     justify-content: center;
     align-items: center;
     margin-top: 36px;
-    margin-left: 100px;
-    margin-right: 100px;
+    /* margin-left: 100px; */
+    /* margin-right: 100px; */
+    margin: 36px auto;
     width: 100%;
+    @media (max-width: 600px) {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-left: 0px;
+        margin-right: 0px;
+    }
 `;
 const Row = styled.div`
     display: grid;
