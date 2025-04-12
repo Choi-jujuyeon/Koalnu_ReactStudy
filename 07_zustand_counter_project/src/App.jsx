@@ -4,13 +4,14 @@ import CountBox from "./components/CountBox";
 import counterStore from "./stores/counterStore";
 const App = () => {
     // const [count, setCount] = useState(0);
-    const { count, increase, increaseBy } = counterStore();
+    const { count, increase, increaseBy, decrease } = counterStore();
     return (
         <div>
             <h1>count: {count}</h1>
             {/* <CountBox count={count} /> */}
             <button onClick={increase}>increase</button>
-            <button onClick={() => increaseBy(10)}>10씩 증가!increase</button>
+            {/* <button onClick={() => increaseBy(10)}>10씩 증가!increase</button> */}
+            <button onClick={decrease}>decrease</button>
 
             <CountBox />
         </div>
