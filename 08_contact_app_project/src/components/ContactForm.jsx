@@ -8,6 +8,7 @@ import {
     createTheme,
     ThemeProvider,
 } from "@mui/material";
+import { usePhoneBookStore } from "../stores/usePhoneBookStore";
 
 // 인스타그램 스타일의 테마 색상
 const theme = createTheme({
@@ -27,6 +28,13 @@ const theme = createTheme({
 const ContactForm = () => {
     const [name, setName] = useState("");
     const [phoneNumber, setPhoneNumber] = useState("");
+    const { addContact } = usePhoneBookStore;
+    const handleAddContact = () => {
+        // 연락처 저장 장소: phoneBook=[] 배열로 저장
+        // 연락처를 추가
+        if (name.trim() || !phoneNumber.trim()) return;
+        addContact(name, phoneNumber);
+    };
     return (
         <ThemeProvider theme={theme}>
             <Box
@@ -95,6 +103,7 @@ const ContactForm = () => {
                                     "linear-gradient(45deg, #F56040, #C13584, #833AB4)",
                                 boxShadow: "0px 4px 15px rgba(0,0,0,0.1)",
                             }}
+                            onClick={handleAddContact}
                         >
                             Send Message
                         </Button>
