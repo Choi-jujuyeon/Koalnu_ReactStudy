@@ -105,7 +105,7 @@ const ContactForm = () => {
                             }}
                             onClick={handleAddContact}
                         >
-                            Send Message
+                            Create
                         </Button>
                     </Box>
                 </Paper>
