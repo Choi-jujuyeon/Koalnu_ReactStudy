@@ -1,4 +1,4 @@
-import React from "react";
+import { useState } from "react";
 import {
     Box,
     TextField,
@@ -25,6 +25,8 @@ const theme = createTheme({
 });
 
 const ContactForm = () => {
+    const [name, setName] = useState("");
+    const [phoneNumber, setPhoneNumber] = useState("");
     return (
         <ThemeProvider theme={theme}>
             <Box
@@ -65,6 +67,8 @@ const ContactForm = () => {
                                     borderRadius: 2,
                                 },
                             }}
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
                         />
                         <TextField
                             label="Phone Number"
@@ -76,6 +80,8 @@ const ContactForm = () => {
                                     borderRadius: 2,
                                 },
                             }}
+                            value={phoneNumber}
+                            onChange={(e) => setPhoneNumber(e.target.value)}
                         />
                         <Button
                             variant="contained"
