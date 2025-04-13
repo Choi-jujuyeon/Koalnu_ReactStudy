@@ -28,11 +28,11 @@ const theme = createTheme({
 const ContactForm = () => {
     const [name, setName] = useState("");
     const [phoneNumber, setPhoneNumber] = useState("");
-    const { addContact } = usePhoneBookStore;
+    const { addContact } = usePhoneBookStore();
     const handleAddContact = () => {
         // 연락처 저장 장소: phoneBook=[] 배열로 저장
         // 연락처를 추가
-        if (name.trim() || !phoneNumber.trim()) return;
+        if (!name.trim() || !phoneNumber.trim()) return;
         addContact(name, phoneNumber);
     };
     return (
@@ -62,7 +62,7 @@ const ContactForm = () => {
                             marginBottom: 3,
                         }}
                     >
-                        Contact Me 👋
+                        Add contact 👋
                     </Typography>
                     <Box display="flex" flexDirection="column" gap={2}>
                         <TextField
