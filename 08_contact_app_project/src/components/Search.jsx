@@ -2,6 +2,12 @@ import React from "react";
 import { TextField, Box } from "@mui/material";
 
 const Search = ({ value, onChange }) => {
+    const searchP = (e) => {
+        if (e.key === "Enter") {
+            let keyword = e.target.value;
+            console.log("keyword: ", keyword);
+        }
+    };
     return (
         <Box width="100%" maxWidth={360} marginBottom={3}>
             <TextField
@@ -10,6 +16,7 @@ const Search = ({ value, onChange }) => {
                 placeholder="🔎Search contacts..."
                 value={value}
                 onChange={onChange}
+                onKeyPress={searchP}
                 sx={{
                     "& .MuiOutlinedInput-root": {
                         borderRadius: 4,

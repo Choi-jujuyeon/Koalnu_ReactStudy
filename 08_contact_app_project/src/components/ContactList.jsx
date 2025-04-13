@@ -1,4 +1,5 @@
 import React from "react";
+import { useState } from "react";
 import { usePhoneBookStore } from "../stores/usePhoneBookStore";
 import {
     Box,
@@ -27,7 +28,13 @@ const theme = createTheme({
 const ContactList = () => {
     const { phoneBook } = usePhoneBookStore();
     // console.log("📞 phoneBook:", phoneBook);
-
+    const [searchItem, setSearchItem] = useState("");
+    // 검색어를 기준으로 필터링
+    const filteredContacts = phoneBook.filter(
+        (contact) =>
+            contact.name.toLowerCase().includes(searchItem.toLowerCase()) ||
+            contact.phoneNumber.includes(searchItem)
+    );
     return (
         <ThemeProvider theme={theme}>
             <Box
@@ -47,9 +54,12 @@ const ContactList = () => {
                 >
                     My Contacts 📱
                 </Typography>
-                <Search />
-                {Array.isArray(phoneBook) && phoneBook.length > 0 ? (
-                    phoneBook.map((item) => (
+                <Search
+                    value={searchItem}
+                    onChange={(e) => setSearchItem(e.target.value)}
+                />
+                {filteredContacts.length > 0 ? (
+                    filteredContacts.map((item) => (
                         <Paper
                             key={item.id}
                             elevation={3}
@@ -72,7 +82,7 @@ const ContactList = () => {
                     ))
                 ) : (
                     <Typography color="text.secondary">
-                        No contacts yet. Add some! ✨
+                        No contacts found. 😢
                     </Typography>
                 )}
             </Box>
