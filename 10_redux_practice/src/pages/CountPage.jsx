@@ -1,6 +1,8 @@
 import React from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import Box from "../components/Box";
+import GrandBox from "../components/GrandBox";
 
 const CountPage = () => {
     const count = useSelector((state) => state.count);
@@ -20,6 +22,8 @@ const CountPage = () => {
             <button onClick={miner}>-</button>
             <h1>{count}</h1>
             <button onClick={plus}>+</button>
+            <Box />
+            <GrandBox />
         </div>
     );
 };
