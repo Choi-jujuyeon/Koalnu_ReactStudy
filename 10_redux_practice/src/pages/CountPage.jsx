@@ -1,17 +1,24 @@
 import React from "react";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
 const CountPage = () => {
-    const [num, setNum] = useState(0);
+    const count = useSelector((state) => state.count);
+
     const plus = () => {
-        setNum(num + 1);
+        // action던져주기
+        dispatch({ type: "INCREMENT" });
     };
     const miner = () => {
-        setNum(num - 1);
+        dispatch({ type: "DECREASE" });
     };
+
+    const dispatch = useDispatch();
+
     return (
         <div>
             <button onClick={miner}>-</button>
-            <h1>{num}</h1>
+            <h1>{count}</h1>
             <button onClick={plus}>+</button>
         </div>
     );
