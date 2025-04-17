@@ -16,7 +16,7 @@ const Header = () => {
                     <Link to="/">
                         <div>메인</div>
                     </Link>
-                    <Link to="/my-page">
+                    <Link to="/my-books">
                         <div>나의 책</div>
                     </Link>
                     {isLogin ? (
