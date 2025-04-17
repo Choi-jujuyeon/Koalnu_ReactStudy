@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import loginStore from "../stores/loginStore";
-import { useNavigate } from "react-router-dom"; // 페이지 이동을 위해 useNavigate 훅을 사용
+import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
-    const { login } = loginStore(); // zustand의 login 함수
+    const { login } = loginStore();
     const [isEmail, setIsEmail] = useState("");
     const [password, setPassword] = useState("");
-    const navigate = useNavigate(); // 페이지 이동을 위한 navigate 함수
-
+    const navigate = useNavigate();
     const loginUser = async (event) => {
         event.preventDefault();
         login(isEmail);
