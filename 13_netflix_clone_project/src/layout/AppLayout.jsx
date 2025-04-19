@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import "./AppLayout.style.css";
+import "./AppLayout.style.js";
 import styled from "styled-components";
 import { Link, Outlet } from "react-router-dom";
-import SearchBar from "../components/SearchBar";
+import SearchBar from "./components/SearchBar/SearchBar";
 
 const AppLayout = () => {
     const [menuOpen, setMenuOpen] = useState(false);
