@@ -8,7 +8,7 @@ import Banner from "./components/Banner/Banner";
 const HomePage = () => {
     return (
         <div>
-            <h1>HOMEPAGE</h1>
+            {/* <h1>HOMEPAGE</h1> */}
             <Banner />
         </div>
     );
