@@ -39,13 +39,11 @@ const AppLayout = () => {
                     <RightContainer>
                         <SearchBar />
 
-                        <Link to="/">
-                            <img
-                                src={`${process.env.PUBLIC_URL}/assets/icon/alarm.svg`}
-                                alt="alarm"
-                                width="40px"
-                            />
-                        </Link>
+                        <img
+                            src={`${process.env.PUBLIC_URL}/assets/icon/alarm.svg`}
+                            alt="alarm"
+                            width="40px"
+                        />
 
                         <img
                             src={`${process.env.PUBLIC_URL}/assets/icon/profile.svg`}
@@ -69,6 +67,14 @@ const Container = styled.div`
     justify-content: start;
     padding: 0 60px;
     color: white;
+
+    @media (max-width: 768px) {
+        padding: 0 20px;
+    }
+
+    @media (max-width: 480px) {
+        padding: 0 10px;
+    }
 `;
 
 const Container2 = styled.div`
@@ -80,15 +86,35 @@ const Container2 = styled.div`
 `;
 
 const Logo = styled.div`
-    height: 100%;
+    height: 90%;
+    margin-right: 20px;
+
     img {
         height: 100%;
         object-fit: contain;
+        width: auto;
     }
-    margin-right: 30px;
+
+    @media (max-width: 768px) {
+        height: 60px; /* 로고 크기 줄이기 */
+        margin-right: 10px;
+
+        img {
+            height: 100%;
+        }
+    }
+
+    @media (max-width: 480px) {
+        height: 50px;
+
+        img {
+            height: 100%;
+        }
+    }
 `;
 
 const MenuBar = styled.div`
+    z-index: 99;
     gap: 30px;
     display: ${({ isOpen }) => (isOpen ? "flex" : "none")};
     flex-direction: column;
@@ -126,6 +152,7 @@ const MenuToggle = styled.button`
     color: white;
     border: none;
     font-size: 20px;
+    white-space: nowrap;
     cursor: pointer;
 
     @media (max-width: 1400px) {

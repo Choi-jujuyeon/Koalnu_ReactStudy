@@ -6,6 +6,9 @@ export const InputWrapper = styled.div`
     justify-content: center;
     gap: 15px;
     position: relative;
+    @media (max-width: 700px) {
+        display: none;
+    }
 `;
 
 export const Input = styled.input`
