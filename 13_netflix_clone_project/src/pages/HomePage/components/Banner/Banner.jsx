@@ -51,12 +51,18 @@ const Overlay = styled.div`
     left: 0;
     height: 100%;
     width: 100%;
-    background: linear-gradient(to bottom, #141414, transparent);
+    background: linear-gradient(
+        to bottom,
+        #141414 0%,
+        rgba(20, 20, 20, 0) 30%,
+        rgba(20, 20, 20, 0) 70%,
+        #141414 100%
+    );
     z-index: 1;
+    pointer-events: none;
 `;
 
 const ContentBox = styled.div`
-    /* background-color: red; */
     position: relative;
     z-index: 2;
     padding: 2rem;
