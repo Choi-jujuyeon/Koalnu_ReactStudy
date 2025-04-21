@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "./AppLayout.style.js";
 import styled from "styled-components";
 import { Link, Outlet } from "react-router-dom";
 import SearchBar from "./components/SearchBar/SearchBar";

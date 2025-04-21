@@ -1,5 +1,9 @@
 import styled from "styled-components";
+import { useMovieGenreQuery } from "../../hooks/useMovieGenreQuery";
+
 const MovieCard = ({ movie }) => {
+    const { data: genreData } = useMovieGenreQuery();
+    console.log("genre", genreData);
     return (
         <CardWrapper>
             <Container backdrop={movie.poster_path}>
