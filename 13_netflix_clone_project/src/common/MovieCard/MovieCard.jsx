@@ -4,6 +4,16 @@ import { useMovieGenreQuery } from "../../hooks/useMovieGenreQuery";
 const MovieCard = ({ movie }) => {
     const { data: genreData } = useMovieGenreQuery();
     console.log("genre", genreData);
+
+    const showGenre = (genreIdList) => {
+        if (!genreData) return [];
+        const genreNameList = genreIdList.map((id) => {
+            const genreObject = genreData.find((genre) => genre.id === id);
+            return genreObject.name;
+        });
+
+        return genreNameList;
+    };
     return (
         <CardWrapper>
             <Container backdrop={movie.poster_path}>
@@ -11,7 +21,7 @@ const MovieCard = ({ movie }) => {
                     <InfoBox>
                         <Title>{movie.title}</Title>
                         <Genres>
-                            {movie.genre_ids.map((id) => (
+                            {showGenre(movie.genre_ids).map((id) => (
                                 <p key={id}>{id}</p>
                             ))}
                         </Genres>

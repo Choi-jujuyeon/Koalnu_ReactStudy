@@ -1,7 +1,7 @@
 import React from "react";
 import { useUpcomingMoviesQuery } from "../../../../hooks/useUpComingMovies";
 import MovieSlide from "../../../../common/MovieSlide/MovieSlide";
-import { responsive } from "../../../../constants/responsice";
+import { responsive } from "../../../../constants/responsive";
 
 const UpcomingMovieSlide = () => {
     const { data, isLoading, isError, error } = useUpcomingMoviesQuery();

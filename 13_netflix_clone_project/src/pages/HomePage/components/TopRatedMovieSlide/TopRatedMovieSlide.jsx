@@ -1,7 +1,7 @@
 import React from "react";
 import { useTopRatedMoviesQuery } from "../../../../hooks/useTopRatedMovies";
 import MovieSlide from "../../../../common/MovieSlide/MovieSlide";
-import { responsive } from "../../../../constants/responsice";
+import { responsive } from "../../../../constants/responsive";
 
 const TopRatedMovieSlide = () => {
     const { data, isLoading, isError, error } = useTopRatedMoviesQuery();
