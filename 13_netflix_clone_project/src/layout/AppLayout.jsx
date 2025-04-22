@@ -38,6 +38,7 @@ const AppLayout = () => {
 
                     <RightContainer>
                         <SearchBar
+                            setKeyword={setKeyword}
                             value={keyword}
                             onChange={(event) => setKeyword(event.target.value)}
                         />

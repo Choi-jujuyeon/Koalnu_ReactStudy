@@ -1,35 +1,30 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const SearchBar = ({ value, onChange }) => {
-    const [isOpen, setIsOpen] = useState(false);
-    const inputRef = useRef(null);
+    const [isOpen, setIsOpen] = useState(true);
     const navigate = useNavigate();
-
-    const openInput = () => {
-        setIsOpen(true);
-        setTimeout(() => {
-            inputRef.current?.focus();
-        }, 0);
-    };
 
     const handleKeyDown = (e) => {
         if (e.key === "Enter") {
             e.preventDefault();
             navigate(`/movies?q=${value}`);
+            handleClear();
         }
     };
 
     const handleClear = () => {
-        onChange({ target: { value: "" } });
         setIsOpen(false);
+        onChange({ target: { value: "" } });
     };
-
+    const handleOpenSearch = () => {
+        setIsOpen(true);
+    };
     return (
         <InputWrapper>
             {!isOpen && (
-                <IconButton onClick={openInput} aria-label="Open search">
+                <IconButton onClick={handleOpenSearch} aria-label="Open search">
                     <img
                         src={`${process.env.PUBLIC_URL}/assets/icon/search.svg`}
                         alt="Search Icon"
@@ -39,14 +34,12 @@ const SearchBar = ({ value, onChange }) => {
             )}
 
             <Input
-                ref={inputRef}
                 placeholder="search..."
                 type="text"
-                name="search"
                 isOpen={isOpen}
                 value={value}
                 onChange={onChange}
-                onKeyDown={handleKeyDown} // ✅ 여기!
+                onKeyDown={handleKeyDown}
             />
 
             {isOpen && value && (
