@@ -24,16 +24,16 @@ const AppLayout = () => {
                     <MenuToggle onClick={toggleMenu}>🔻메뉴</MenuToggle>
 
                     <MenuBar isOpen={menuOpen}>
-                        <Link to="/">
+                        <Link to="/" onClick={() => setMenuOpen(false)}>
                             <div>홈</div>
                         </Link>
-                        <div>시리즈</div>
-                        <Link to="/movies">
+                        {/* <div>시리즈</div> */}
+                        <Link to="/movies" onClick={() => setMenuOpen(false)}>
                             <div>영화</div>
                         </Link>
-                        <div>NEW!요즘 대세 콘텐츠</div>
+                        {/* <div>NEW!요즘 대세 콘텐츠</div>
                         <div>내가 찜한 리스트</div>
-                        <div>언어별로 찾아보기</div>
+                        <div>언어별로 찾아보기</div> */}
                     </MenuBar>
 
                     <RightContainer>
@@ -136,9 +136,11 @@ const MenuBar = styled.div`
 
     div {
         padding: 10px 0;
-
+        width: 100px;
+        text-align: center;
         border-bottom: ${({ isOpen }) =>
             isOpen ? "2px solid #a3a3a3c8" : "none"};
+        font-size: 20px;
     }
 
     @media (min-width: 1401px) {

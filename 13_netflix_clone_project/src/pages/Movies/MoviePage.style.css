@@ -1,0 +1,49 @@
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    list-style: none;
+    padding: 20px 0;
+}
+
+.page-item {
+    padding: 10px 15px;
+    border-radius: 8px;
+    background-color: transparent;
+    color: #fff;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    user-select: none;
+}
+
+.page-item:hover {
+    background-color: #e50914;
+    /* transform: scale(1.05); */
+    color: white;
+}
+
+/* 현재 선택된 페이지 */
+.active {
+    background-color: #e50914;
+    border-radius: 8px;
+    padding: 10px 10px;
+    color: white;
+    font-weight: bold;
+    /* transform: scale(1.1); */
+    box-shadow: 0 0 10px rgba(229, 9, 20, 0.5);
+}
+
+/* 비활성 페이지 (예: 이전/다음 버튼이 안 될 때) */
+.page-item:disabled {
+    background-color: #333;
+    color: #777;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.page-item:disabled:hover {
+    background-color: #333;
+}

@@ -1,12 +1,17 @@
 import React from "react";
 import { usePopularMoviesQuery } from "../../../../hooks/usePopularMovies";
 import styled from "styled-components";
+import Loading from "../../../../common/Loading/Loading";
 
 const Banner = () => {
     const { data, isLoading, isError, error } = usePopularMoviesQuery();
 
     if (isLoading) {
-        return <h1>Loading ...</h1>;
+        return (
+            <h1>
+                <Loading />
+            </h1>
+        );
     }
 
     if (isError) {
