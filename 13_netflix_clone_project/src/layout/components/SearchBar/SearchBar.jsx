@@ -1,10 +1,11 @@
 import React, { useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
-const SearchBar = () => {
+const SearchBar = ({ value, onChange }) => {
     const [isOpen, setIsOpen] = useState(false);
-    const [inputValue, setInputValue] = useState("");
     const inputRef = useRef(null);
+    const navigate = useNavigate();
 
     const openInput = () => {
         setIsOpen(true);
@@ -13,12 +14,15 @@ const SearchBar = () => {
         }, 0);
     };
 
-    const handleInputChange = (e) => {
-        setInputValue(e.target.value);
+    const handleKeyDown = (e) => {
+        if (e.key === "Enter") {
+            e.preventDefault();
+            navigate(`/movies?q=${value}`);
+        }
     };
 
     const handleClear = () => {
-        setInputValue("");
+        onChange({ target: { value: "" } });
         setIsOpen(false);
     };
 
@@ -40,13 +44,14 @@ const SearchBar = () => {
                 type="text"
                 name="search"
                 isOpen={isOpen}
-                value={inputValue}
-                onChange={handleInputChange}
+                value={value}
+                onChange={onChange}
+                onKeyDown={handleKeyDown} // ✅ 여기!
             />
 
-            {isOpen && inputValue && (
+            {isOpen && value && (
                 <CloseButton
-                    visible={isOpen && inputValue}
+                    visible={isOpen && value}
                     onClick={handleClear}
                     aria-label="Clear search"
                 >

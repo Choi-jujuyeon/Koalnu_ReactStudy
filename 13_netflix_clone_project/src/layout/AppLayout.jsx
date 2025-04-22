@@ -5,8 +5,9 @@ import SearchBar from "./components/SearchBar/SearchBar";
 
 const AppLayout = () => {
     const [menuOpen, setMenuOpen] = useState(false);
-
     const toggleMenu = () => setMenuOpen(!menuOpen);
+
+    const [keyword, setKeyword] = useState("");
 
     return (
         <>
@@ -36,7 +37,10 @@ const AppLayout = () => {
                     </MenuBar>
 
                     <RightContainer>
-                        <SearchBar />
+                        <SearchBar
+                            value={keyword}
+                            onChange={(event) => setKeyword(event.target.value)}
+                        />
 
                         <img
                             src={`${process.env.PUBLIC_URL}/assets/icon/alarm.svg`}
