@@ -16,7 +16,9 @@ function App() {
                     <Route index element={<MoviePage />} />
                     <Route path=":id" element={<MovieDetailPage />} />
                 </Route>
-
+                <Route path="test" element={<MovieDetailPage />}>
+                    {" "}
+                </Route>
                 {/* 기존의 구성 방식 */}
                 {/* <Route path="/movies" element={<MoviePage />} />
                 <Route path="/movies/:id" element={<MovieDetailPage />} /> */}

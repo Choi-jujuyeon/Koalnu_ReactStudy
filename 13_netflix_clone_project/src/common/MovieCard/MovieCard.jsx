@@ -1,9 +1,11 @@
 import styled from "styled-components";
 import { useMovieGenreQuery } from "../../hooks/useMovieGenreQuery";
+import { useNavigate } from "react-router-dom";
 
 const MovieCard = ({ movie }) => {
     const { data: genreData } = useMovieGenreQuery();
     // console.log("genre", genreData);
+    const navigate = useNavigate();
 
     const showGenre = (genreIdList) => {
         if (!genreData) return [];
@@ -15,7 +17,7 @@ const MovieCard = ({ movie }) => {
         return genreNameList;
     };
     return (
-        <CardWrapper>
+        <CardWrapper onClick={() => navigate(`/movies/${movie.id}`)}>
             <Container backdrop={movie.poster_path}>
                 <Overlay>
                     <InfoBox>
