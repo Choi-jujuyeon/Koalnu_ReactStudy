@@ -105,3 +105,21 @@ export const ExtraInfo = styled.div`
     gap: 4px;
     opacity: 0.8;
 `;
+
+export const Placeholder = styled.div`
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #444;
+    color: #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 10px;
+    /* margin: auto; */
+`;
