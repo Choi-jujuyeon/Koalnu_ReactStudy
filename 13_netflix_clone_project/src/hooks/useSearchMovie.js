@@ -1,15 +1,28 @@
 import { useQuery } from "@tanstack/react-query";
 import api from "../utils/api";
-const fetchSearchMovie = ({ keyword, page }) => {
-    //상황에 따라 2가지의 다른 ui를 호출을 해줘야 한다!
-    return keyword
-        ? api.get(`/search/movie?query=${keyword}&page=${page}`)
-        : api.get(`/movie/popular?page=${page}`);
+
+const fetchSearchMovie = ({ keyword, page, sortBy, genre }) => {
+    if (keyword) {
+        // 검색 중이면 기존 Search API
+        return api.get("/search/movie", {
+            params: { query: keyword, page },
+        });
+    } else {
+        // 키워드 없을 땐 Discover API 에 장르/정렬 파라미터 추가
+        return api.get("/discover/movie", {
+            params: {
+                sort_by: sortBy,
+                with_genres: genre,
+                page,
+            },
+        });
+    }
 };
-export const useSearchMovieQuery = ({ keyword, page }) => {
+
+export const useSearchMovieQuery = ({ keyword, page, sortBy, genre }) => {
     return useQuery({
-        queryKey: [`movie-search`, keyword, page],
-        queryFn: () => fetchSearchMovie({ keyword, page }),
-        select: (result) => result.data,
+        queryKey: ["movie-search", keyword, page, sortBy, genre],
+        queryFn: () => fetchSearchMovie({ keyword, page, sortBy, genre }),
+        select: (res) => res.data,
     });
 };
